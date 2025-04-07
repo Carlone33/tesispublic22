@@ -3,7 +3,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <h1 class="bg-indigo-500 text-2xl text-white text-center">Exclusión por Registro Policial</h1>
+                    <h1 class="bg-indigo-500 text-white  col-start-1 col-span-4 text-center text-xl  mb-3  border-t border-b py-4">Exclusion por Registro Policial</h1>
 
                     <form class="mt-5 mr-5 ml-5 mb-5">
                         <div class="grid grid-cols-4 gap-4">
@@ -75,7 +75,7 @@
                             <x-checkbox wire:click="toggleAssigned" />Con apoderado
                             </label>
                             @if ($showAssigned)
-                            <h2 class="col-start-1 col-span-4 text-center text-xl mt-3 mb-3  border-t border-b py-4">Información del apoderado</h2>
+                            <h2 class="bg-indigo-500 text-white  col-start-1 col-span-4 text-center text-xl mt-3 mb-3  border-t border-b py-4">Información del apoderado</h2>
                             <label class="col-start-1">
                                 Cedula
                                 <input class="block mt-2" type="text">
@@ -105,7 +105,7 @@
                                 <input class="block mt-2" type="text">
                             </label>
                             @endif
-                            <h2 class="col-start-1 col-span-4 text-center text-xl mt-3 mb-3  border-t border-b py-4">Información del abogado</h2>
+                            <h2 class="bg-indigo-500 text-white  col-start-1 col-span-4 text-center text-xl mt-3 mb-3  border-t border-b py-4">Información del abogado</h2>
                             <label class="col-start-1">
                                 Nombre
                                 <input class="block mt-2" type="text">

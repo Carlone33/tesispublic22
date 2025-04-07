@@ -3,7 +3,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <h1 class="bg-indigo-500 text-2xl text-white text-center">Exclusión por Registro Unico</h1>
+                    <h1 class="bg-indigo-500 text-white  col-start-1 col-span-4 text-center text-xl  mb-3  border-t border-b py-4">Exclusion por Registro Unico</h1>
 
                     <form wire:submit.prevent="FormatoyEnviar" class="mt-5 mr-5 ml-5 mb-5">
                         <div class="grid grid-cols-4 gap-4">
@@ -67,7 +67,7 @@
                             </label>
                             <label class="col-start-3">
                                 Teléfono
-                                <input wire:model="telefono" required class="block mt-2" type="text">
+                               <input wire:model="telefono" class="block mt-2" required type="text">
                                 @error('telefono')
                                 <span class="text-red-500 text-xs mt-3 block ">{{ $message }}</span>
                                 @enderror
@@ -111,22 +111,22 @@
                                 <span class="text-red-500 text-xs mt-3 block ">{{ $message }}</span>
                                 @enderror
                             </label>
-                            <h2 class="col-start-1 col-span-4 text-center text-xl mt-3 mb-3  border-t border-b py-4">Información del abogado</h2>
+                            <h2 class="bg-indigo-500 text-white col-start-1 col-span-4 text-center text-xl mt-3 mb-3 border-t border-b py-4">Información del abogado</h2>
                             <label class="col-start-1">
                                 Nombre
-                                <input class="block mt-2" type="text">
+                                <input wire:model="nombre_abogado" class="block mt-2" type="text">
                             </label>
                             <label class="col-start-3">
                                 Apellido
-                                <input class="block mt-2" type="text">
+                                <input wire:model="apellido_abogado" class="block mt-2" type="text">
                             </label>
                             <label class="col-start-1">
                                 Cedula
-                                <input class="block mt-2" type="text">
+                                <input wire:model="cedula_abogado" class="block mt-2" type="text">
                             </label>
                             <label class="col-start-3">
                                 Teléfono
-                                <input class="block mt-2" type="text">
+                                <input wire:model="telefono_abogado" class="block mt-2" type="text">
                             </label>
 
 

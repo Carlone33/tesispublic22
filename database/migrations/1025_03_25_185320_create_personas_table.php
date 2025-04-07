@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->integer('DNI');
+            $table->string('nacionalidad');
+            $table->integer('cedula')->unique();
             $table->string('sexo');
             $table->integer('telefono');
             $table->timestamps();

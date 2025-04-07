@@ -21,25 +21,33 @@ class RegistroUnico extends Component
     public $delito;
     public $fecha_inicio;
     public $fecha_final;
+    public $nombre_abogado;
+    public $apellido_abogado;
+    public $cedula_abogado;
+    public $telefono_abogado;
 
     protected function rules()
     {
         return [
             'guia' => 'required|numeric',
-            'cedula' => 'required|numeric',
+            'cedula' => 'required|numeric|digits_between:7,8',
             'nacionalidad' => 'required',
             'primernombre' => 'required',
             'segundonombre' => 'nullable',
             'primerapellido' => 'required',
             'segundoapellido' => 'nullable',
             'direccion' => 'required',
-            'telefono' => 'required',
-            'telefonolocal' => 'nullable',
+            'telefono' => 'required|digits:10',
+            'telefonolocal' => 'nullable|digits:10',
             'estado_ciudadano' => 'required',
             'direccion_dependencia' => 'required',
             'delito' => 'required',
             'fecha_inicio' => 'required|date_format:Y-m-d',
-            'fecha_final' => 'required|date_format:Y-m-d|after:fecha_inicio'
+            'fecha_final' => 'required|date_format:Y-m-d|after:fecha_inicio',
+            'nombre_abogado' => 'required',
+            'apellido_abogado' => 'required',
+            'cedula_abogado' => 'required|numeric|digits_between:7,8',
+            'telefono_abogado' => 'required|digits:10',
         ];
     }
 
@@ -84,6 +92,9 @@ class RegistroUnico extends Component
         $this->estado_ciudadano = strtoupper($this->estado_ciudadano);
         $this->direccion_dependencia = strtoupper($this->direccion_dependencia);
         $this->delito = strtoupper($this->delito);
+        $this->nombre_abogado = strtoupper($this->nombre_abogado);
+        $this->apellido_abogado = strtoupper($this->apellido_abogado);
+
 
         dd($this->guia,
             $this->cedula,
@@ -117,8 +128,14 @@ class RegistroUnico extends Component
             'direccion_dependencia',
             'delito',
             'fecha_inicio',
-            'fecha_final'
+            'fecha_final',
+            'nombre_abogado',
+            'apellido_abogado',
+            'cedula_abogado',
+            'telefono_abogado'
         ]);
+
+        $this->resetValidation();
     }
 
     public function render()

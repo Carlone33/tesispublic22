@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('registros_unicos', function (Blueprint $table) {
             $table->id();
-            $table->integer('año');
-            $table->integer('guia');
+            $table->integer('guia')->unique();
+            $table->string('nacionalidad');
             $table->integer('cedula')->unique();
             $table->string('url_img');
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('lugar');
+            $table->string('direccion_domicilio');
+            $table->string('telefono_local');
             $table->date('fecha');
             $table->string('estado');
             $table->string('delito');
-            $table->string('direccion');
-            $table->string('planilla');
+            $table->string('direccion_dependencia');
+            $table->string('estado_ciudadano');
             $table->integer('telefono')->unique();
             $table->integer('telefono_local');
             $table->string('nombre_abogado');
