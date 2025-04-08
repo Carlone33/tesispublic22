@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Livewire;
-
+use Livewire\WithFileUploads;
 use Livewire\Component;
 
 class RegistroUnico extends Component
 {
+
+    use WithFileUploads;
+
+
+    public $foto;
     public $guia;
     public $cedula;
     public $nacionalidad;
@@ -48,6 +53,7 @@ class RegistroUnico extends Component
             'apellido_abogado' => 'required',
             'cedula_abogado' => 'required|numeric|digits_between:7,8',
             'telefono_abogado' => 'required|digits:10',
+            'foto' => 'nullable|image|max:1024', // Valida que sea una imagen y no mayor a 1 MB
         ];
     }
 
@@ -87,14 +93,40 @@ class RegistroUnico extends Component
         $this->primerapellido = strtoupper($this->primerapellido);
         $this->segundoapellido = strtoupper($this->segundoapellido);
         $this->direccion = strtoupper($this->direccion);
-        $this->telefono = strtoupper($this->telefono);
-        $this->telefonolocal = strtoupper($this->telefonolocal);
         $this->estado_ciudadano = strtoupper($this->estado_ciudadano);
         $this->direccion_dependencia = strtoupper($this->direccion_dependencia);
         $this->delito = strtoupper($this->delito);
         $this->nombre_abogado = strtoupper($this->nombre_abogado);
         $this->apellido_abogado = strtoupper($this->apellido_abogado);
 
+        dd($this->guia,
+        $this->cedula,
+        $this->nacionalidad,
+        $this->primernombre,
+        $this->segundonombre,
+        $this->primerapellido,
+        $this->segundoapellido,
+        $this->direccion,
+        $this->telefono,
+        $this->telefonolocal,
+        $this->estado_ciudadano,
+        $this->direccion_dependencia,
+        $this->delito,
+        $this->fecha_inicio,
+        $this->fecha_final,
+        $this->foto
+    );
+        $path = null;
+
+        if ($this->foto) {
+            // Guarda la imagen en el directorio 'fotos' dentro del almacenamiento público
+            $path = $this->foto->store('fotos/' . date('Y/m/d'), 'public');
+        }
+
+        // Aquí puedes guardar la ruta en la base de datos si es necesario
+        // Ejemplo: Registro::create(['foto' => $path]);
+
+        // session()->flash('message', 'Formulario enviado y foto guardada correctamente.');
 
         dd($this->guia,
             $this->cedula,
@@ -110,7 +142,8 @@ class RegistroUnico extends Component
             $this->direccion_dependencia,
             $this->delito,
             $this->fecha_inicio,
-            $this->fecha_final
+            $this->fecha_final,
+            $this->foto
         );
 
         $this->reset([
@@ -132,7 +165,8 @@ class RegistroUnico extends Component
             'nombre_abogado',
             'apellido_abogado',
             'cedula_abogado',
-            'telefono_abogado'
+            'telefono_abogado',
+            'foto'
         ]);
 
         $this->resetValidation();
