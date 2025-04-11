@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unidades_administrativas', function (Blueprint $table) {
+       Schema::create('direccion', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->timestamps();
+            $table->string('estado');
+            $table->string('municipio');
+            $table->string('parroquia');
+            $table->string('calle');
+            $table->string('casa-edificio');
+            $table->string('piso');
+            $table->string('piso-apartamento');
         });
     }
 
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unidades_administrativas');
+        //
     }
 };

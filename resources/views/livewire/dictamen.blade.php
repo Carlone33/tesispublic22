@@ -1,9 +1,9 @@
 <div>
     <div>
-        <div class="py-12">
+        <div class="py-2">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <h1 class="bg-indigo-500 text-2xl text-white text-center">Exclusión por Dictamen</h1>
+                    <h1 class="bg-sky-600 text-2xl text-white text-center">Exclusión por Dictamen</h1>
 
                     <form class="mt-5 mr-5 ml-5 mb-5">
                         <div class="grid grid-cols-4 gap-4">

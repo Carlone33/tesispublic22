@@ -9,7 +9,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
         $this->app->singleton(GuideNumberService::class, function () {
             return new GuideNumberService();

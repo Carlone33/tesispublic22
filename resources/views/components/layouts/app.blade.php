@@ -40,6 +40,9 @@
 
         @stack('modals')
 
+
+
+        @livewire('footer')
         @livewireScripts
     </body>
 </html>

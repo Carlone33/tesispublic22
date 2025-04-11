@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Http\Controllers\GuideController;
+use App\Services\GuideNumberService;
 
 class RegistroPolicial extends Component
 {
@@ -52,7 +52,7 @@ class RegistroPolicial extends Component
     protected function rules()
     {
         return [
-            'foto' => 'nullable|image|max:1024', // Imagen opcional, máximo 1 MB
+            'foto' => 'nullable|image|max:1024', // <- max está en Kb (Kilobytes)
             'guia' => 'required|string|max:50',
             'nacionalidad' => 'required|string|in:V,E',
             'cedula' => 'required|numeric|digits_between:7,8',
@@ -115,9 +115,10 @@ class RegistroPolicial extends Component
 
     public function submit()
     {
-        $this->validate();
-
-        // Procesa los datos (por ejemplo, guardar en la base de datos)
+        // $this->validate();
+        $guideService = new GuideNumberService();
+        $this->guia = $guideService->generate('registro_policial', 'REGPOL');
+        dd($this->guia);
         session()->flash('message', 'Formulario enviado correctamente.');
     }
 

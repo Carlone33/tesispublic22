@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dictamenes', function (Blueprint $table) {
+        Schema::create('persona-direccion', function (Blueprint $table) {
             $table->id();
-            $table->integer('año');
-            $table->integer('guia');
-            $table->integer('cedula')->unique();
-            $table->string('nombre_abogado');
-
-
-
-
+            $table->foreignId('persona_id')->constrained('persona')->onDelete('cascade');
+            $table->foreignId('direccion_id')->constrained('direccion')->onDelete('cascade');
         });
     }
 

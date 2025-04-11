@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedBigInteger('funcionario_id')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->unsignedBigInteger('funcionario_id')->nullable();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->integer('intentos_fallidos')->default(0);
+            $table->boolean('habilitado')->default(false);
+            $table->timestamp('fecha_ultimo_cambio_contrasena')->useCurrent();
+            $table->string('observaciones')->nullable();
             $table->timestamps();
+            
+            $table->foreign('funcionario_id')->references('id')->on('funcionario')->onDelete('cascade');
         });
     }
 

@@ -22,8 +22,10 @@ class GuideNumberService
 
         $sequence->increment('last_number');
 
-        return Str::upper($prefix)
-            . $year
+        return Str::upper($prefix).
+            '-'
+            . $year.
+            '-'
             . str_pad($sequence->last_number, $digits, '0', STR_PAD_LEFT);
     }
 }

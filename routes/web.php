@@ -4,6 +4,7 @@ use App\Livewire\Dictamen;
 use App\Livewire\RegistroPolicial;
 use App\Livewire\RegistroUnico;
 use App\Livewire\SolicitudAdministrativa;
+use App\Livewire\Solicitudes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login'); // Redirige al login
 });
 
 Route::middleware([
@@ -29,8 +30,9 @@ Route::middleware([
     Route::get('/inicio', function () {
         return view('inicio');
     })->name('inicio');
-    Route::get('/solicitud-administrativa', SolicitudAdministrativa::class)->name('solicitud-administrativa');
-    Route::get('/registro-unico', RegistroUnico::class)->name('registro-unico');
-    Route::get('/dictamen', Dictamen::class)->name('dictamen');
-    Route::get('/registro-policial', RegistroPolicial::class)->name('registro-policial');
+    // Route::get('/solicitud-administrativa', SolicitudAdministrativa::class)->name('solicitud-administrativa');
+    // Route::get('/registro-unico', RegistroUnico::class)->name('registro-unico');
+    // Route::get('/dictamen', Dictamen::class)->name('dictamen');
+    // Route::get('/registro-policial', RegistroPolicial::class)->name('registro-policial');
+    Route::get('/solicitudes', Solicitudes::class)->name('solicitudes');
 });
