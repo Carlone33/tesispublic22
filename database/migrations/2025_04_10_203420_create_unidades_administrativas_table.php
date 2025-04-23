@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('unidad_administrativa', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->unsignedBigInteger('direccion_id')->nullable();
-            $table->timestamps();
-            
-            $table->foreign('direccion_id')->references('id')->on('direccion')->onDelete('set null');
+            $table->string('nombre')->nullable();
+            $table->string('codigo')->nullable();//->unique()
+            // $table->unsignedBigInteger('direccion_id')->nullable();
+            // $table->timestamps();
+
+            // $table->foreign('direccion_id')->references('id')->on('direccion')->onDelete('set null');
         });
     }
 

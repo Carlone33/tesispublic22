@@ -15,18 +15,6 @@
                     <x-nav-link href="{{ route('inicio') }}" :active="request()->routeIs('inicio')">
                         {{ __('Inicio') }}
                     </x-nav-link>
-                    {{-- <x-nav-link href="{{ route('solicitud-administrativa') }}" :active="request()->routeIs('solicitud-administrativa')">
-                        {{ __('Solicitud Administrativa') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('registro-unico') }}" :active="request()->routeIs('registro-unico')">
-                        {{ __('Registro Unico') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('dictamen') }}" :active="request()->routeIs('dictamen')">
-                        {{ __('Dictamen') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('registro-policial') }}" :active="request()->routeIs('registro-policial')">
-                        {{ __('Registro Policial') }}
-                    </x-nav-link> --}}
                     <x-nav-link href="{{ route('solicitudes') }}" :active="request()->routeIs('solicitudes')">
                         {{ __('Solicitudes') }}
                     </x-nav-link>
@@ -156,6 +144,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('inicio') }}" :active="request()->routeIs('inicio')">
                 {{ __('Inicio') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('solicitudes') }}" :active="request()->routeIs('solicitudes')">
+                {{ __('Solicitudes') }}
             </x-responsive-nav-link>
         </div>
 

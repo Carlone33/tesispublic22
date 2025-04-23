@@ -35,6 +35,6 @@ class UserSeeder extends Seeder
             'funcionario_id' => $funcionario->id,
             'password' => bcrypt('carlos33'),
             'habilitado' => true
-        ]);
+        ])->syncRoles(['Administrador', 'Permisologo', 'Transcriptor']);
     }
 }

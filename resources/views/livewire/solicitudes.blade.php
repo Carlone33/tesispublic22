@@ -2,8 +2,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid bg-white overflow-hidden shadow-xl sm:rounded-lg grid-cols-6">
-                <h1
-                    class="bg-blue-600 text-white col-start-1 col-span-6 text-center text-xl mb-3 border-t border-b py-2">
+                <h1 class="bg-gradient-to-r from-blue-600 to-blue-800 text-white col-start-1 col-span-6 text-center text-xl mb-3 border-t border-b py-2">
                     Seleccione el tipo de solicitud
                 </h1>
                 <label class="col-start-2 mb-5" >Exclusión por:</label>
@@ -12,7 +11,7 @@
                     <option value="RegistroPolicial" class="border-b border-gray-300 hover:bg-gray-200">Registro Policial</option>
                     <option value="SolicitudAdministrativa" class="border-b border-gray-300 hover:bg-gray-200">Solicitud Administrativa</option>
                     <option value="Dictamen" class="border-b border-gray-300 hover:bg-gray-200">Dictamen</option>
-                    <option value="RegistroUnico" class="border-b border-gray-300 hover:bg-gray-200">Registro Unico</option>
+                    <option value="RegistroUnico" class="border-b border-gray-300 hover:bg-gray-200">Registro Único</option>
                 </select>
             </div>
         </div>

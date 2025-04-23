@@ -4,6 +4,17 @@
             <x-authentication-card-logo />
         </x-slot>
 
+        <!-- Mensajes de error personalizados -->
+        @if (session('errores'))
+            <div class="mb-4 font-medium text-sm text-red-600">
+                <ul>
+                    @foreach (session('errores') as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <x-validation-errors class="mb-4" />
 
         @if (session('status'))

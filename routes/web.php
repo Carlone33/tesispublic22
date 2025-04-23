@@ -34,5 +34,5 @@ Route::middleware([
     // Route::get('/registro-unico', RegistroUnico::class)->name('registro-unico');
     // Route::get('/dictamen', Dictamen::class)->name('dictamen');
     // Route::get('/registro-policial', RegistroPolicial::class)->name('registro-policial');
-    Route::get('/solicitudes', Solicitudes::class)->name('solicitudes');
+    Route::get('/solicitudes', Solicitudes::class)->middleware('can:Crear transcripciones')->name('solicitudes');
 });

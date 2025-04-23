@@ -15,14 +15,13 @@ class UnidadAdministrativa extends Model
 
     protected $fillable = [
         'nombre',
-        'jefe_id',
-        'direccion_id'
+        'codigo',
     ];
 
-    public function jefe(): BelongsTo
-    {
-        return $this->belongsTo(Funcionario::class, 'jefe_id');
-    }
+    // public function jefe(): BelongsTo
+    // {
+    //     return $this->belongsTo(Funcionario::class, 'jefe_id');
+    // }
 
     public function direccion(): BelongsTo
     {

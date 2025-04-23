@@ -47,17 +47,17 @@ protected $isFirstCall = true;
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
         Fortify::authenticateUsing(function (Request $request) {
-            $funcionario = Funcionario::where('credencial', $request->credencial)->first();
             $errores = [];
-            
+            $funcionario = Funcionario::where('credencial', $request->credencial)->first();
+
             if ($funcionario) {
                 $user = User::where('funcionario_id', $funcionario->id)->first();
-                
+
                 if ($user) {
                     if ($user->habilitado) {
                         if (Hash::check($request->password, $user->password)) {
                             $session = DB::select('select * from sessions where user_id = ?', [$user->id]);
-                            
+
                             if (!$session) {
                                 if ($this->isFirstCall) {
                                     $this->isFirstCall = false;
@@ -70,7 +70,7 @@ protected $isFirstCall = true;
                                     } else {
                                         $ip = $_SERVER['REMOTE_ADDR'];
                                     }
-                                    
+
                                     $historialSesion = new TrazaAcceso;
                                     $historialSesion->user_id = $user->id;
                                     $historialSesion->ip = $ip;
@@ -102,7 +102,7 @@ protected $isFirstCall = true;
             } else {
                 $errores[] = 'Las credenciales no coinciden con ningún registro.';
             }
-            
+
             session()->flash('errores', $errores);
             return null;
         });
