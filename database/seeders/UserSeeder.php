@@ -9,32 +9,74 @@ use App\Models\Funcionario;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Create persona
-        $persona = Persona::create([
-            'primer_nombre' => 'Carlos',
-            'primer_apellido' => 'Admin',
-            'nacionalidad' => 'V',
-            'cedula' => '00000000',
-            'sexo' => 'M',
-            'correo' => 'cmph1507@gmail.com',
-        ]);
+        $usuarios = [
+            [
+                'persona' => [
+                    'primer_nombre' => 'Carlos',
+                    'primer_apellido' => 'Admin',
+                    'nacionalidad' => 'V',
+                    'cedula' => '00000001',
+                    'sexo' => 'M',
+                    'correo' => 'admin@example.com',
+                ],
+                'funcionario' => ['credencial' => 'admin01'],
+                'password' => '00000',
+                'rol' => 'Administrador',
+            ],
+            [
+                'persona' => [
+                    'primer_nombre' => 'Paula',
+                    'primer_apellido' => 'Permisologa',
+                    'nacionalidad' => 'V',
+                    'cedula' => '00000002',
+                    'sexo' => 'F',
+                    'correo' => 'permisologo@example.com',
+                ],
+                'funcionario' => ['credencial' => 'permi01'],
+                'password' => '00000',
+                'rol' => 'Permisologo',
+            ],
+            [
+                'persona' => [
+                    'primer_nombre' => 'Tomas',
+                    'primer_apellido' => 'Transcriptor',
+                    'nacionalidad' => 'V',
+                    'cedula' => '00000003',
+                    'sexo' => 'M',
+                    'correo' => 'transcriptor@example.com',
+                ],
+                'funcionario' => ['credencial' => 'trans01'],
+                'password' => '00000',
+                'rol' => 'Transcriptor',
+            ],
+            [
+                'persona' => [
+                    'primer_nombre' => 'Pedro',
+                    'primer_apellido' => 'Lucha Libre',
+                    'nacionalidad' => 'V',
+                    'cedula' => '00000004',
+                    'sexo' => 'M',
+                    'correo' => 'superadmin@example.com',
+                ],
+                'funcionario' => ['credencial' => '00000'],
+                'password' => 'carlos33',
+                'rol' => 'Superadministrador',
+            ],
+        ];
 
-        // Create funcionario
-        $funcionario = Funcionario::create([
-            'persona_id' => $persona->id,
-            'credencial' => '00000',
-        ]);
-
-        // Create user
-        User::create([
-            'funcionario_id' => $funcionario->id,
-            'password' => bcrypt('carlos33'),
-            'habilitado' => true
-        ])->syncRoles(['Administrador', 'Permisologo', 'Transcriptor']);
+        foreach ($usuarios as $u) {
+            $persona = Persona::create($u['persona']);
+            $funcionario = Funcionario::create([
+                'persona_id' => $persona->id,
+                'credencial' => $u['funcionario']['credencial'],
+            ]);
+            User::create([
+                'funcionario_id' => $funcionario->id,
+                'password' => bcrypt($u['password']),
+                'habilitado' => true
+            ])->syncRoles([$u['rol']]);
+        }
     }
 }

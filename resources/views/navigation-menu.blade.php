@@ -12,12 +12,27 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('inicio') }}" :active="request()->routeIs('inicio')">
+                    {{-- <x-nav-link href="{{ route('inicio') }}" :active="request()->routeIs('inicio')">
                         {{ __('Inicio') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
+                    @can('Crear transcripciones')
                     <x-nav-link href="{{ route('solicitudes') }}" :active="request()->routeIs('solicitudes')">
                         {{ __('Solicitudes') }}
                     </x-nav-link>
+                    @endcan
+                    @can('Ver usuarios')
+                    <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
+                        {{ __('Administrador') }}
+                    </x-nav-link>
+                    @endcan
+                    @can('Ver permisos')
+                    <x-nav-link href="{{ route('permisos') }}" :active="request()->routeIs('permisos')">
+                        {{ __('Permisos') }}
+                    </x-nav-link>
+                    @endcan
+
+
+
                 </div>
             </div>
 

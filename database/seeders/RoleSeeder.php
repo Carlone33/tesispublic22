@@ -24,6 +24,8 @@ class RoleSeeder extends Seeder
         $supervisor = Role::firstOrCreate(['name' => 'Supervisor', 'guard_name' => 'web']);
         $permisologo = Role::firstOrCreate(['name' => 'Permisologo', 'guard_name' => 'web']);
         $transcriptor = Role::firstOrCreate(['name' => 'Transcriptor', 'guard_name' => 'web']);
+        $superadministrador = Role::firstOrCreate(['name' => 'Superadministrador', 'guard_name' => 'web']);
+
 
         Permission::Create(['name' => 'Crear usuarios'])->assignRole($administrador);
         Permission::Create(['name' => 'Ver usuarios'])->syncRoles([$administrador, $supervisor]);
@@ -36,5 +38,7 @@ class RoleSeeder extends Seeder
         Permission::Create(['name' => 'Eliminar permisos'])->assignRole($permisologo);
 
         Permission::Create(['name' => 'Crear transcripciones'])->assignRole($transcriptor);
+
+        $superadministrador->syncPermissions(Permission::all());
     }
 }

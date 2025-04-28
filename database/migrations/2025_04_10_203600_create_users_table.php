@@ -18,6 +18,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->integer('intentos_fallidos')->default(0);
             $table->boolean('habilitado')->default(false);
+            $table->boolean('eliminado')->default(false);
+            $table->boolean('bloqueado')->default(false);
             $table->timestamp('fecha_ultimo_cambio_contrasena')->useCurrent();
             $table->string('observaciones')->nullable();
             $table->timestamps();

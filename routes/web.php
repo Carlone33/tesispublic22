@@ -5,6 +5,8 @@ use App\Livewire\RegistroPolicial;
 use App\Livewire\RegistroUnico;
 use App\Livewire\SolicitudAdministrativa;
 use App\Livewire\Solicitudes;
+use App\Livewire\InterfazAdministrador;
+use App\Livewire\InterfazPermisologia;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +37,6 @@ Route::middleware([
     // Route::get('/dictamen', Dictamen::class)->name('dictamen');
     // Route::get('/registro-policial', RegistroPolicial::class)->name('registro-policial');
     Route::get('/solicitudes', Solicitudes::class)->middleware('can:Crear transcripciones')->name('solicitudes');
+    Route::get('/admin', InterfazAdministrador::class)->middleware('can:Ver usuarios')->name('admin');
+    Route::get('/permisos', InterfazPermisologia::class)->middleware('can:Ver permisos')->name('permisos');
 });
